@@ -66,6 +66,7 @@
 					<source>17</source>
 					<target>17</target>
 					<verbose>true</verbose>
+					<release>11</release>
 				</configuration>
 			</plugin>
 			<plugin>
