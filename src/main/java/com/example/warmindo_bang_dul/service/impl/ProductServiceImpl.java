@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
                     responseDto.setPrice(product.getPrice());
                     responseDto.setProductImage(product.getProductImage());
                     return responseDto;
-                }).toList();
+                }).collect(Collectors.toList());
 
 //        List<GetProductResponseDto> responseList = new ArrayList<>();
 //
