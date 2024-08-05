@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 @RestController
@@ -29,9 +30,17 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<Map<String, Object>> getAll(){
         Map<String, Object> response = new HashMap<>();
-        response.put("message", "success");
+        response.put("message", "success get product");
         response.put("data", productService.getAllProduct());
 
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> getById(@PathVariable("id") UUID productId){
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "success");
+        response.put("data", productService.getById(productId));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

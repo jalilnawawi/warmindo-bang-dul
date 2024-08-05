@@ -7,4 +7,5 @@ public class GetProductResponseDto {
     private String productName;
     private Double price;
     private String productImage;
+    private String productType;
 }

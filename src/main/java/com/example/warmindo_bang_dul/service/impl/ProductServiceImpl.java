@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +29,7 @@ public class ProductServiceImpl implements ProductService {
                     responseDto.setProductName(product.getProductName());
                     responseDto.setPrice(product.getPrice());
                     responseDto.setProductImage(product.getProductImage());
+                    responseDto.setProductType(product.getProductType().toString());
                     return responseDto;
                 }).collect(Collectors.toList());
 
@@ -59,5 +62,11 @@ public class ProductServiceImpl implements ProductService {
             product.setProductType(ProductType.SNACK);
         }
         return productRepository.save(product);
+    }
+
+    @Override
+    public Product getById(UUID productId) {
+        Optional<Product> product = productRepository.findById(productId);
+        return product.get();
     }
 }
